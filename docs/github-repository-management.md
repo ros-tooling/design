@@ -45,8 +45,8 @@ During the course of implementation evaluate them, with the following order of p
 * Lastly, if nothing comes close enough to meeting our constraints, then we may need to start from scratch on a new action - this will be of clear use to other communities within the ROS ecosystem, and is likely generically useful to other software projects
 
 Application of settings will be performed by having the Template Repository configured as follows
-* Action workflow, triggered on push to the default branch - that runs the file and settings synchronizers
-* Has a GitHub API Token, set as a Secret, that allows it to perform the settings updates and open PRs
+* The Template Repository has an Action workflow. It is triggered on push to the default branch of the Template Repository. The workflow that runs the File and Settings synchronization methods
+* The Template Repository has a GitHub API Token, set as a Secret, that allows it to perform the settings updates and open PRs on the managed repositories
 
 Due to the fact that we may decide to use a preexisting project, the following are not set in stone, but are provided as guideposts to clarify the goals.
 
