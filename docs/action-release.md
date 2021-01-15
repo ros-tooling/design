@@ -22,7 +22,7 @@ However, in order to release our Actions into the GitHub Marketplace, we cannot 
 According to the [GitHub Marketplace Documentation](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/publishing-actions-in-github-marketplace) - "Each repository must contain a single action."
 Therefore, we will maintain a separate repository for each action that we wish to publish to the marketplace.
 
-The primary goal of combining repositories was to reduce code duplication - this will be accomplished by creating a Node package containing shared code, in an additional repository, to be consumed by the released Actions. This package can easily released using GitHub package registries.
+The primary goal of combining repositories was to reduce code duplication. We will accomplish this by putting shared Typescript code into a repository of its own. This code can be built and released as a Node package, released to its own GitHub Package Registry, to be consumed by the Actions
 
 ### Build artifact generation
 
@@ -33,10 +33,10 @@ Additionally, as dependencies are updated via Dependabot - the build output is n
 
 All of this just goes to show that we need an automated solution:
 
-* Development will occur on the default branch
+* Development will occur on the default branch `main`
 * The build output `dist/index.js` will _not_ be checked into this development branch
 * CI for PRs and on schedule will build the sources before running the tests
-* A separate branch, `release`, will be created. Every time a new commit is pushed to `master`, a GitHub Action will be triggered that builds `master` and pushes the resulting build artifact to `release`
+* A separate branch, `release`, will be created. Every time a new commit is pushed to `main`, a GitHub Action will be triggered that builds `main` and pushes the resulting build artifact to `release`
 
 In this way, parallel development will be easier by allowing simple branch updates, Dependabot updates will actually update the build artifacts, and developers never have to remember to check in build artifacts, they can focus on the changes at hand.
 
